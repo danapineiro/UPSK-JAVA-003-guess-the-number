@@ -1,31 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.List; //
+import java.util.ArrayList; // importamos la clase arrayList para almacenar las suposiciones
 
-// clase abstracta que lo que hace es representar a un jugador x dentro del juego
-public abstract class Player {
-    private String name; // aqui representamos el nombre del jugador
-    private List<Integer> guesses; // aqui una lista que almacena los números que supone el jugador
+// aqui se definne la clase abstracta player
+abstract class Player {
+    protected String name; // almacenamos el nombre del jugador con atributo protegido
+    public List<Integer> guesses; // aqui se guarda la lista de las suposiciones
 
-    // aqui el constructor de la clase player
+    // aqui el constructor que iniciliza con el nombre y las suposiciones
     public Player(String name) {
-        this.name = name; // inicializa con el nombre del jugador
-        this.guesses = new ArrayList<>(); // Inicializa esta lista de supusiciones
-    }
-
-    // getName metodo para obtener el nombre del jugador
-    public String getName(){
-        return this.name;
-    }
-    // setName metodo para establecer el nombre del jugador
-    public void setName(String name){
         this.name = name;
+        this.guesses = new ArrayList<>(); // aqui dejamos vacio el arrayList para tomar al final los numeros de ambos jugadores
     }
 
-    // makeGuess metodo abstracto que tiene que ser implementado por las subclases y asi poder hacer la suposicion
+    // aqui tenemos un metodo abstracto que será implementado por sus clases hijas
     public abstract int makeGuess();
 
-    // con este metodo se obtiene el historial de suposiciones del jugador
+    // tenemos aqui el metodo para obtener el nombre del player
+    public String getName() {
+        return name;
+    }
+
+    // metodo para obtener la lista de suposiciones del player
     public List<Integer> getGuesses() {
-        return this.guesses;
+        return guesses;
     }
 }
