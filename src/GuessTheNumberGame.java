@@ -2,8 +2,9 @@ import java.util.Random; // importamos la clase random para generar los numeros 
 import java.util.Scanner; // importamos la clase scanner para poder ver la entrada del usuario
 
 public class GuessTheNumberGame {
-    private static Random random = new Random(); // en esta clase instanciamos un objeto para generar # aleatorios de la clase random
+    private static final Random random = new Random(); // en esta clase instanciamos un objeto para generar # aleatorios de la clase random
     private static int targetNumber; // aqui almacenamos el numero a adivinar
+
 
     public static void main(String[] args) {
         // msj de bienvenida
@@ -28,7 +29,7 @@ public class GuessTheNumberGame {
 
         // aqui tenemos el bucle principal
         while (true) {
-            startGame(); // aqui iniciamos el juego
+            GuessTheNumberGame.startGame(); // aqui iniciamos el juego
 
             // tenemos esta variable para guardar el ganador del juego
             Player winner = playGame(humanPlayer, computerPlayer);
@@ -57,10 +58,16 @@ public class GuessTheNumberGame {
         }
     }
 // aqui iniciamos una nueva partida y generamos un nuevo numero
-    private static void startGame() {
+
+    public static void startGame() {
         targetNumber = random.nextInt(100) + 1;
-        System.out.println("Número generado para la partida: " + targetNumber); // no olvidar sacar ( es solo para adivinar rápido)
+        System.out.println("Número generado para la partida: " + targetNumber);
     }
+
+    public static int getTargetNumber() {
+        return targetNumber;
+    }
+
 
     // aqui jugamos lass partidas por turnos
     private static Player playGame(HumanPlayer humanPlayer, ComputerPlayer computerPlayer) {
